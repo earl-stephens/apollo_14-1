@@ -33,4 +33,21 @@ describe "on the index page" do
       expect(page).to have_content("Job: #{astro3.job}")
     end
   end
+
+#   User Story 2 of 4
+#
+# As a visitor,
+# When I visit '/astronauts'
+# I see the average age of all astronauts.
+#
+# (e.g. "Average Age: 34")
+  it "shows average age" do
+    astro1 = Astronaut.create(name: "Joe", age: 35, job: "janitor")
+    astro2 = Astronaut.create(name: "Bob", age: 40, job: "cook")
+    astro3 = Astronaut.create(name: "Pat", age: 45, job: "pilot")
+
+    visit astronauts_path
+
+    expect(page).to have_content("Average Age: 40")
+  end
 end
