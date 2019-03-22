@@ -50,4 +50,27 @@ describe "on the index page" do
 
     expect(page).to have_content("Average Age: 40")
   end
+
+#   User Story 3 of 4
+#
+# As a visitor,
+# When I visit '/astronauts'
+# I see a list of the space missions' in alphabetical order for each astronaut.
+#
+# (e.g "Apollo 13"
+#      "Capricorn 4"
+#      "Gemini 7")
+  it "shows space missions" do
+    astro1 = Astronaut.create(name: "Joe", age: 35, job: "janitor")
+    astro2 = Astronaut.create(name: "Bob", age: 40, job: "cook")
+    astro3 = Astronaut.create(name: "Pat", age: 45, job: "pilot")
+    mission1 = Mission.create(title: "Moon")
+    mission2 = Mission.create(title: "Jupiter")
+    mission3 = Mission.create(title: "Saturn")
+
+    visit astronauts_path
+
+    expect(page).to have_content("Jupiter, Moon, Saturn")
+
+  end
 end

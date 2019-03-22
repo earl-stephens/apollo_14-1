@@ -10,4 +10,14 @@ describe Mission, type: :model do
     it { should have_many :astronaut_missions}
     it { should have_many :astronauts}
   end
+
+  describe 'class methods' do
+    it '.listing' do
+      mission1 = Mission.create!(title: "Moon", time_in_space: 12)
+      mission2 = Mission.create(title: "Jupiter", time_in_space: 13)
+      mission3 = Mission.create(title: "Saturn", time_in_space: 14)
+
+      expect(Mission.listing).to eq(["Jupiter", "Moon", "Saturn"])
+    end
+  end
 end

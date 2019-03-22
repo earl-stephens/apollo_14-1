@@ -3,6 +3,7 @@ class AstronautsController < ApplicationController
     # binding.pry
     @astros = Astronaut.all
     @avg_age = Astronaut.average_age
+    @missions = Mission.listing
     # binding.pry
   end
 end
